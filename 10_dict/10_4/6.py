@@ -17,3 +17,25 @@
 
 # Примечание 3. Телефон — это несколько цифр, записанных подряд, а имя может состоять из букв русского или английского алфавита. Записи не повторяются.
 
+list_of_insert = [[i for i in input().lower().split()] for _ in range(int(input()))]
+phone_book = {}
+for el in list_of_insert:
+    name, phone = el[1], el[0]
+    if name in phone_book:
+        phone_book[name].append(phone)
+    else:
+        phone_book[name] = [phone]
+
+for _ in range(int(input())):
+    print(*phone_book.get(input().lower(), ['абонент не найден']))
+
+
+# Another option of solving:
+
+# dct = {}
+# for _ in range(int(input())):
+#     phone, name = input().lower().split()
+#     dct.setdefault(name, []).append(phone)
+# for _ in range(int(input())):
+#     print(*dct.get(input().lower(), ['абонент не найден']))
+        
